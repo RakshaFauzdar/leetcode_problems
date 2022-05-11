@@ -11,24 +11,28 @@
  */
 class Solution {
 public:
-    
     int sum=0;
-    
-    void inorder(TreeNode*root,int low,int high)
+    int in(TreeNode*root,int l,int h)
     {
-        if(root)
-        {
-            inorder(root->left,low ,high);
-            if(root->val>=low && root->val<=high)
+        
+        if(root==NULL)
+            return 0;
+
+            in(root->left,l,h);
+            if(root->val>=l && root->val<=h)
             {
                 sum+=root->val;
             }
             
-            inorder(root->right,low,high);
-        }
+            in(root->right,l,h);
+       
+        return sum;
     }
     int rangeSumBST(TreeNode* root, int low, int high) {
-        inorder(root,low,high);
+        if(root==NULL)
+            return 0;
+        
+         in(root,low,high);
         return sum;
         
     }
