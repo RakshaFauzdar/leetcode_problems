@@ -6,20 +6,22 @@ public:
         int m=2*n;
         
         
-        
+        stack<int>s;
         vector<int>ans(n,-1);
-        for(int i=0;i<n;i++)
+        for(int i=0;i<m;i++)
         {
-            for(int j=1;j<n;j++)
+            int d=nums[i%n];
+            while(s.empty()==false && nums[s.top()]<d)
             {
-                if(nums[i]<nums[(i+j)%n])
-                {
-                    ans[i]=nums[(i+j)%n];
-                    break;
-                    
-                }
+                ans[s.top()]=d;
+                s.pop();
+            }
+            if(i<n)
+            {
+                s.push(i);
             }
         }
+       
         return ans;
         
     }
