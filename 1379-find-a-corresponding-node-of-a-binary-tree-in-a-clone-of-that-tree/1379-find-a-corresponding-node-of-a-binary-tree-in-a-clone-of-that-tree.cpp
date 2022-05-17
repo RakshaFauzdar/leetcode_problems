@@ -11,23 +11,14 @@
 class Solution {
 public:
     TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
-        queue<TreeNode*>q;
+      queue<TreeNode*>q;
         q.push(cloned);
-        
-        // queue<TreeNode*>q1;
-        // q1.push(cloned);
-        
-        
-        while(!q.empty())
+        while(q.empty()==false)
         {
-            
             TreeNode*curr=q.front();
             q.pop();
-            
             if(curr->val==target->val)
-            {
                 return curr;
-            }
             
             if(curr->left)
             {
@@ -37,7 +28,6 @@ public:
             {
                 q.push(curr->right);
             }
-            
         }
         return NULL;
         
