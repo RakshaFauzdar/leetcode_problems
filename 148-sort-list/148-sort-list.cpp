@@ -11,19 +11,12 @@
 class Solution {
 public:
     ListNode* sortList(ListNode* head) {
-        
-        
-        
-        
-        
         if(head==NULL || head->next==NULL)
-        {
             return head;
-        }
-        ListNode*slow=head;
         
-        ListNode*fast=head;
         ListNode*curr=head;
+        ListNode*slow=head;
+        ListNode*fast=head;
         while(fast && fast->next)
         {
             curr=slow;
@@ -31,50 +24,43 @@ public:
             fast=fast->next->next;
         }
         curr->next=NULL;
-        
-        ListNode*l1=sortList(head);
+            ListNode*l1=sortList(head);
         ListNode*l2=sortList(slow);
         
         
-        return mergesort(l1,l2);
-        
+        return  merge(l1,l2);
     }
     
-    ListNode*mergesort(ListNode*l1,ListNode*l2)
+    ListNode*merge(ListNode*l1,ListNode*l2)
     {
-        
-        
-        ListNode*ptr=new ListNode(0);
-        ListNode*curr=ptr;
-        while(l1!=NULL && l2!=NULL)
+        ListNode*curr=new ListNode(0);
+        ListNode*p=curr;
+        while(l1 && l2)
         {
-            if(l1->val<=l2->val)
+            if(l2->val<=l1->val)
             {
-                curr->next=l1;
-                l1=l1->next;
-                
+                p->next=l2;
+                l2=l2->next;
             }
             else
             {
-                curr->next=l2;
-                l2=l2->next;
+                p->next=l1;
+                l1=l1->next;
             }
-            
-            curr=curr->next;
+            p=p->next;
         }
-        if(l1!=NULL)
+        if(l1)
         {
-            curr->next=l1;
+            p->next=l1;
             l1=l1->next;
         }
         
-        if(l2!=NULL)
+        if(l2)
         {
-            curr->next=l2;
+            p->next=l2;
             l2=l2->next;
         }
-        
-        
-        return ptr->next;
+       
+        return curr->next;
     }
 };
