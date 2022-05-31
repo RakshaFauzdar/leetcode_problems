@@ -2,7 +2,7 @@ class Solution {
 public:
     bool hasAllCodes(string s, int k) {
         int n=s.length();
-        int d=1<<k;
+        int d=pow(2,k);
         set<string>s1;
         for(int i=0;i+k<=n;i++)
         {
