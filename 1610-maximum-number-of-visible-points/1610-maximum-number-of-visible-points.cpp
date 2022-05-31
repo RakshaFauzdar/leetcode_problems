@@ -3,47 +3,46 @@ public:
     int visiblePoints(vector<vector<int>>& points, int angle, vector<int>& location) {
         int x=location[0];
         int y=location[1];
+        int over_lap=0;
+        int answer=0;
         vector<double>v;
-        int same=0;
         for(auto p:points)
         {
             int x1=p[0];
             int y1=p[1];
-            if(x1==x && y1==y)
+            if(x==x1 && y==y1)
             {
-                same++;
+                over_lap++;
             }
             else
             {
-                double an =get(x1-x,y1-y);
-                v.push_back(an);
+                int x2=x1-x;
+                int y2=y1-y;
+                double get=atan2(x2,y2)*180/M_PI;
+               
+                v.push_back(get);
             }
         }
+        
+        
         sort(v.begin(),v.end());
-        int n=v.size();
-        for(int i=0;i<n;i++)
+        int p=v.size();
+        for(int i=0;i<p;i++)
         {
             v.push_back(v[i]+360);
         }
-        
-        int i=0,j=0;
         int m=v.size();
-        int mx=0;
+        int j=0;
         for(int i=0;i<m;i++)
         {
-            while(v[i]-v[j]>angle)
+            if(v[i]-v[j]>angle)
             {
                 j++;
             }
-            mx=max(mx,i-j+1);
+            answer=max(answer,i-j+1);
         }
-         
-        return mx+same;
         
-    }
-    
-    double get(int x,int y)
-    {
-        return atan2(x,y)*180/M_PI;
+        return answer+over_lap;
+        
     }
 };
