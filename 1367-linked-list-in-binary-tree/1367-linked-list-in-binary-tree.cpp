@@ -23,6 +23,7 @@ class Solution {
 public:
     bool is(ListNode*head,TreeNode*root)
     {
+//         it will check if there exisys a path form curr root node having the linked list
         if(head==NULL)return true;
         if(root==NULL)return false;
         
@@ -37,14 +38,19 @@ public:
     }
     bool isSubPath(ListNode* head, TreeNode* root) {
         bool flag=false;
+//         flag to check if there exists a path
         if(head==NULL)return true;
         if(root==NULL)return false;
         if(head->val==root->val)
         {
+//             recusrive call to check next node of linked list
             flag=is(head->next,root->left) || is(head->next,root->right);
         }
+//         recursive call for next elemenet of the binary tree
         
         return flag || isSubPath(head,root->left) || isSubPath(head,root->right);
         
     }
+//     time -O(m*n)
+//     space-O(1)
 };
