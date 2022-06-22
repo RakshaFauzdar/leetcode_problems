@@ -16,14 +16,14 @@ public:
         if(root!=NULL)
         {
             if(root->right)
-                            bstToGst(root->right);
+           bstToGst(root->right);
            
            
             root->val = ans + root->val;
             ans=root->val;
            
            if(root->left)
-                        bstToGst(root->left);
+            bstToGst(root->left);
             
             
         }
