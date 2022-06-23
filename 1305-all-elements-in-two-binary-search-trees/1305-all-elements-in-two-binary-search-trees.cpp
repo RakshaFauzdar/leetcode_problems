@@ -12,30 +12,54 @@
 class Solution {
 public:
     
-    map<int,int>m;
+   
   
-    void in(TreeNode*root)
+    void in(TreeNode*root,vector<int>&v)
     {
-        if(root==NULL)return;
-        else m[root->val]++;
+        if(!root)return;
+        in(root->left,v);
+        v.push_back(root->val);
         
-        in(root->left);
        
-        in(root->right);
+        in(root->right,v);
     }
     vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
-        in(root1);
-        in(root2);
         vector<int>v;
-        for(auto it:m)
+        vector<int>v1;
+        in(root1,v);
+        in(root2,v1);
+        int i=0,j=0;
+        int n=v.size();
+        int m=v1.size();
+        vector<int>v2;
+        while(i<n && j<m)
         {
-            for(int i=0;i<it.second;i++)
+            if(v[i]<=v1[j])
             {
-            v.push_back(it.first);
+               v2.push_back(v[i]);
+                i++;
+            }
+            else if(v[i]>v1[j])
+            {
+                v2.push_back(v1[j]);
+                j++;
             }
         }
+        while(i<n)
+        {
+            v2.push_back(v[i]);
+            i++;
+        }
+        while(j<m)
+        {
+            v2.push_back(v1[j]);
+            j++;
+        }
+       
+       
+       
             
             
-        return v;
+        return v2;
     }
 };
