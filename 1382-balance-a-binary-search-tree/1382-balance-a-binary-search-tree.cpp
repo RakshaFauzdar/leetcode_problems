@@ -23,6 +23,7 @@ public:
     {
         if(start>end)return NULL;
         int mid=(start+end)/2;
+//         
         TreeNode*root=v[mid];
         root->left=solve(start,mid-1);
         root->right=solve(mid+1,end);
