@@ -10,7 +10,7 @@ public:
             if(nums[i-1]>=nums[i])
             {
                 int d=nums[i-1]-nums[i];
-                nums[i]=nums[i-1]+1;
+                nums[i]=nums[i]+d+1;
                 sum+=(d+1);
                 
             }
