@@ -2,24 +2,35 @@ class Solution {
 public:
     int minDeletions(string s) {
         int n=s.length();
-        unordered_map<char,int>m;
-        int f[26];
+       vector<int>f(26,0);
         for(int i=0;i<n;i++)
         {
-            m[s[i]-'a']++;
+            f[s[i]-'a']++;
         }
-        int c=0;
-        unordered_set<int>s1;
+        priority_queue<int>pq;
         for(int i=0;i<26;i++)
         {
-            while(m[i]>0 && s1.find(m[i])!=s1.end())
+            if(f[i]>0)
+                pq.push(f[i]);
+        }
+        int c=0;
+        while(pq.size()>1)
+        {
+            int x=pq.top();
+            pq.pop();
+            if(x==pq.top())
             {
-                m[i]--;
+                if(x-1>0)
+                {
+                    pq.push(x-1);
+                }
                 c++;
             }
-            s1.insert(m[i]);
         }
         return c;
+       
+        
+        
         
     }
 };
