@@ -32,35 +32,22 @@ vector<long long> printFirstNegativeInteger(long long int A[],long long int N, l
 {
     
     vector<long long>v;
-    queue<long long >q;
-    for(int i=0;i<K-1;i++)
-    {
-        if(A[i]<0)
-        {
-            q.push(i);
-        }
-    }
-    for(int i=K-1;i<N;i++)
-    {
-        if(A[i]<0)
-        {
-            q.push(i);
-        }
-        
-        if(!q.empty())
-        {
-            v.push_back(A[q.front()]);
-            if(i-q.front()==K-1)
-            {
-                q.pop();
-            }
-        }
-        else
-        {
-            v.push_back(0);
-        }
-    }
-   
+  int i=0,j=0;
+  for(int i=K-1;i<N;i++)
+  {
+      while(j<i && (j<=i-K || A[j]>=0))
+      {
+          j++;
+      }
+      if(A[j]<0)
+      {
+          v.push_back(A[j]);
+      }
+      else
+      {
+          v.push_back(0);
+      }
+  }
     return v;
                                                  
  }
