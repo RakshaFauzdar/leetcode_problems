@@ -4,7 +4,6 @@ public:
     {
         sort(a.begin(),a.end());
         sort(b.begin(),b.end());
-        
         return a==b;
     }
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
@@ -12,11 +11,11 @@ public:
         vector<vector<string>>v;
         unordered_map<string,vector<string>>m;
         string s;
-        for(auto it:strs)
+        for(int i=0;i<n;i++)
         {
-            s=it;
+            s=strs[i];
             sort(s.begin(),s.end());
-            m[s].push_back(it);
+            m[s].push_back(strs[i]);
             
         }
         for(auto it:m)
@@ -25,7 +24,5 @@ public:
         }
         
         return v;
-        
-        
     }
 };
