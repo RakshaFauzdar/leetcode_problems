@@ -7,7 +7,7 @@ public:
             return 0;
        
         int mx=1;
-        set<int>s;
+        unordered_set<int>s;
         for(auto it:nums)
         {
             s.insert(it);
