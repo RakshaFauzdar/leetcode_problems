@@ -6,19 +6,19 @@ public:
         vector<int>v;
         
         
-        if(n==1 || m==1)
-        {
-            for(int i=0;i<n;i++)
-            {
-                for(int j=0;j<m;j++)
-                {
-                    v.push_back(mat[i][j]);
-                }
-            }
-            // return v;
-        }
-        else
-        {
+        // if(n==1 || m==1)
+        // {
+        //     for(int i=0;i<n;i++)
+        //     {
+        //         for(int j=0;j<m;j++)
+        //         {
+        //             v.push_back(mat[i][j]);
+        //         }
+        //     }
+        //     // return v;
+        // }
+        // else
+        // {
         v.push_back(mat[0][0]);
         
         
@@ -86,7 +86,7 @@ public:
             }
             
         }
-        }
+        // }
         return v;
         
         
