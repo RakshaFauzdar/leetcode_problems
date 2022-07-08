@@ -12,22 +12,20 @@ class Solution{
     //Function to find the leaders in the array.
     public:
     vector<int> leaders(int a[], int n){
-        
-        int i=0,j=n-1;
         vector<int>v;
-        int d=a[n-1];
-        v.push_back(d);
+        int mx=a[n-1];
+        v.push_back(mx);
         for(int i=n-2;i>=0;i--)
         {
-            if(a[i]>=d)
+            if(a[i]>=mx)
             {
-                d=a[i];
-                v.push_back(d);
+                v.push_back(a[i]);
+                mx=a[i];
             }
         }
         reverse(v.begin(),v.end());
+        // v.push_back(a[n-1]);
         return v;
-        // Code here
         
     }
 };
