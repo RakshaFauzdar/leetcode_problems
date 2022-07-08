@@ -13,22 +13,16 @@ class Solution
     int missingNumber(int arr[], int n) 
     { 
         
+        int c=1;
+        sort(arr,arr+n);
         for(int i=0;i<n;i++)
         {
-            while(arr[i]>0 && arr[i]<=n && arr[arr[i]-1]!=arr[i])
+            if(arr[i]==c)
             {
-                swap(arr[i],arr[arr[i]-1]);
+                c++;
             }
         }
-        
-        for(int i=0;i<n;i++)
-        {
-            if(arr[i]!=i+1)
-            {
-                return i+1;
-            }
-        }
-        return n+1;
+        return c;
         // Your code here
     } 
 };
