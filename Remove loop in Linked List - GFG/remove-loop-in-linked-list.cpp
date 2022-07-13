@@ -79,43 +79,37 @@ class Solution
     //Function to remove a loop in the linked list.
     void removeLoop(Node* head)
     {
-        Node*slow=head;
-        Node*fast=head;
-        bool flag=1;
-        while(fast && fast->next)
-        {
-            slow=slow->next;
-            fast=fast->next->next;
-            
-            if(slow==fast)
-            {
-                flag=0;
-                break;
-                
-            }
-        }
-        if(flag==1)
-        {
-            return;
-        }
-        Node*p=head;
-        while(p!=slow)
-        {
-            p=p->next;
-            slow=slow->next;
-        }
-        
-        while(slow->next!=p)
-        {
-            slow=slow->next;
-            // slow->next=NULL;
-        }
-        slow->next=NULL;
-        
-        
-        // code here
-        // just remove the loop without losing any nodes
-    }
+       Node*slow=head;
+       Node*fast=head;
+       bool flag=1;
+       while(fast && fast->next)
+       {
+           slow=slow->next;
+           fast=fast->next->next;
+           if(slow==fast)
+           {
+               flag=0;
+               break;
+           }
+       }
+       if(flag==1)
+       {
+           return;
+       }
+       
+       
+       Node*p=head;
+       while(slow!=p)
+       {
+           p=p->next;
+           slow=slow->next;
+       }
+       while(slow->next!=p)
+       {
+           slow=slow->next;
+       }
+       slow->next=NULL;
+     }
 };
 
 // { Driver Code Starts.
