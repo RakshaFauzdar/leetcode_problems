@@ -49,12 +49,13 @@ void printList(struct node *node)
 class Solution
 {
     public:
-   
     struct node *reverse (struct node *head, int k)
     { 
-        node*curr=head;
-        node*prev=NULL;
-        node*next=NULL;
+        // Cmplete this method
+        
+        struct node*curr=head;
+        struct node*prev=NULL;
+        struct node*next=NULL;
         int c=0;
         while(curr && c<k)
         {
@@ -63,12 +64,13 @@ class Solution
             curr->next=prev;
             prev=curr;
             curr=next;
+            
         }
-        if(next)
+        
+        if(next!=NULL)
         {
             head->next=reverse(next,k);
         }
-       
         
         return prev;
     }
