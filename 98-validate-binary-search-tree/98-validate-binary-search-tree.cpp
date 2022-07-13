@@ -11,21 +11,39 @@
  */
 class Solution {
 public:
-    bool is(TreeNode*root,TreeNode*mini,TreeNode*maxi)
+//     bool is(TreeNode*root,TreeNode*mini,TreeNode*maxi)
+//     {
+        
+//         if(!root)return true;
+        
+//         if(mini && root->val<=mini->val)
+//             return false;
+//         else if(maxi && root->val>=maxi->val)
+//             return false;
+        
+//         return is(root->left,mini,root) && is(root->right,root,maxi);
+//     }
+    void is(TreeNode*root,vector<int>&v)
     {
-        
-        if(!root)return true;
-        
-        if(mini && root->val<=mini->val)
-            return false;
-        else if(maxi && root->val>=maxi->val)
-            return false;
-        
-        return is(root->left,mini,root) && is(root->right,root,maxi);
+        if(!root)return;
+        is(root->left,v);
+        v.push_back(root->val);
+        is(root->right,v);
     }
     bool isValidBST(TreeNode* root) {
         
-        return is(root,NULL,NULL);
+       vector<int>v;
+        is(root,v);
+        bool flag=true;
+        for(int i=0;i<v.size()-1;i++)
+        {
+            if(v[i]>=v[i+1])
+            {
+                flag=false;
+                break;
+            }
+        }
+        return flag;
         
         
         
