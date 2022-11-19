@@ -3,22 +3,22 @@ public:
     int trap(vector<int>& height) {
         
         int n=height.size();
+        int low=0,high=n-1;
+        int ans=0;
         int mi=0,ma=0;
-        int lo=0,ho=n-1;
-        long long ans=0;
-        while(lo<=ho)
+        while(low<=high)
         {
-            if(height[lo]<height[ho])
+            if(height[low]<height[high])
             {
-               mi=max(height[lo],mi);
-               ans+=(mi-height[lo]);
-                lo++;
+                mi=max(mi,height[low]);
+                ans+=(mi-height[low]);
+                low++;
             }
             else
             {
-               ma=max(ma,height[ho]);
-               ans+=(ma-height[ho]);
-                ho--;
+                ma=max(ma,height[high]);
+                ans+=(ma-height[high]);
+                high--;
             }
         }
         
