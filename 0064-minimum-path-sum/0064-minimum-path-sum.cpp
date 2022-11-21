@@ -7,7 +7,10 @@ public:
         int m=grid[0].size();
         
         int ans=0;
-        
+        if(n==0 || m==0)
+        {
+            return 0;
+        }
         for(int i=1;i<n;i++)
         {
             grid[i][0]+=grid[i-1][0];
