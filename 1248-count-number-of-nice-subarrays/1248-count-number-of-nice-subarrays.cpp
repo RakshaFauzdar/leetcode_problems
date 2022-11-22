@@ -5,21 +5,36 @@ public:
         
         int n=nums.size();
         int sum=0;
-        for(int i=0;i<n;i++)
+       int ans=0;
+        int count=0;
+        int i=0,j=0;
+        int odd=0;
+        while(i<n)
         {
-            nums[i]=nums[i]%2;
-        }
-        unordered_map<int,int>mp;
-        mp[0]=1;
-        int ans=0;
-        for(int i=0;i<n;i++)
-        {
-            sum+=nums[i];
-            if(mp.find(sum-k)!=mp.end())
+            if(nums[i]%2!=0)
             {
-                ans+=mp[sum-k];
+                odd++;
+                count=0;
             }
-            mp[sum]++;
+            
+            while(odd==k)
+            {
+                count++;
+                if(nums[j]%2!=0)
+                {
+                    odd--;
+                    j++;
+                   
+                }
+                else
+                {
+                    j++;
+                }
+               
+            }
+            
+            ans+=count;
+            i++;
         }
         return ans;
     }
